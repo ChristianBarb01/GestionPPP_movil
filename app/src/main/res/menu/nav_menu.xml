@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+     <item
+         android:id="@+id/nav_home"
+         android:icon="@drawable/home_nav"
+         android:title="Home"
+         />
+
+        <item
+            android:id="@+id/nav_informacion"
+            android:icon="@drawable/nav_about"
+            android:title="Informacion"
+            />
+
+        <item
+            android:id="@+id/nav_notification_"
+            android:icon="@drawable/notifications_nav"
+            android:title="Notificacioines"
+            />
+
+        <item
+            android:id="@+id/nav_convocatoria"
+            android:icon="@drawable/assignment_nav"
+            android:title="Convocatorias"
+            />
+
+        <item
+            android:id="@+id/nav_respuesta"
+            android:icon="@drawable/quickreply_nav"
+            android:title="Respuesta"
+            />
+
+    </group>
+
+
+    <item        android:title=""
+        >
+        <menu>
+            <item
+                android:id="@+id/nav_exit"
+                android:icon="@drawable/exit_nav"
+                android:title="Logout"
+                />        </menu>
+    </item>
+</menu>
