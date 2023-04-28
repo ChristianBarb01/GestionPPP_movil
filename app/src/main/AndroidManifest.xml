@@ -10,9 +10,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MovilPrePracticasProfesional">
         <activity
-            android:name=".bienvenida"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+            android:name=".fragmente_buscarEstudent"
             android:exported="false" />
+        <activity
+            android:name=".fragment_BuscarDocente"
+            android:exported="false" />
+        <activity
+            android:name=".ListElement"
+            android:exported="false" />
+        <activity
+            android:name=".bienvenida"
+            android:exported="false"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
             android:name=".MainActivity"
             android:exported="true">
