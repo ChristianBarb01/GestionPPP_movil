@@ -16,8 +16,9 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void onClickButton(View view) {
-        Intent vtn2= new Intent(this, bienvenida.class );
-        startActivity(vtn2);
+
+    public void logueado(View view) {
+        Intent vntmenustudiante=new Intent(MainActivity.this,bienvenida.class);
+        startActivity(vntmenustudiante);
     }
 }
