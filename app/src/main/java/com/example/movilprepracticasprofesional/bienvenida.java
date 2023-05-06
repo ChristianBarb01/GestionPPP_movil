@@ -41,18 +41,14 @@ public class bienvenida extends AppCompatActivity implements NavigationView.OnNa
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){
-            case R.id.nav_view:
-                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new HomeFragment()).commit();
 
-                break;
             case R.id.nav_home:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new HomeFragment()).commit();
 
                 break;
 
-            case R.id.nav_convocatoria:
+                case R.id.nav_convocatoria:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new ConvocatoriaFragment()).commit();
-                Toast.makeText(this, "hool", Toast.LENGTH_SHORT).show();
 
                 break;
 

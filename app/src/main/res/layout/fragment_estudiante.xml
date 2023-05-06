@@ -15,6 +15,13 @@
         android:layout_width="match_parent"
         android:layout_height="80dp"
         android:src="@drawable/person" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Estudiantes"
+        android:textColor="@color/lavender"
+        android:textSize="20sp"
+        />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -39,7 +46,6 @@
             android:textColor="@color/black"
             android:textSize="20sp"
             android:layout_weight="1"/>
-
 
     </LinearLayout>
 

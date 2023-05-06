@@ -40,19 +40,20 @@ public class bienvenidadocente extends AppCompatActivity implements NavigationVi
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()){
-            case R.id.nav_view:
-                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new HomeFragment()).commit();
+        return false;
+    }
 
-                break;
+   /* @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()){
+
             case R.id.nav_home:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new HomeFragment()).commit();
 
                 break;
 
-            case R.id.nav_convocatoria:
+                case R.id.nav_convocatoria:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new ConvocatoriaFragment()).commit();
-                Toast.makeText(this, "hool", Toast.LENGTH_SHORT).show();
 
                 break;
 
@@ -62,7 +63,7 @@ public class bienvenidadocente extends AppCompatActivity implements NavigationVi
                 break;
 
             case R.id.nav_notification_:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new NotifaicacionFragment()).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new NotificacionFragment()).commit();
 
                 break;
 
@@ -83,5 +84,5 @@ public class bienvenidadocente extends AppCompatActivity implements NavigationVi
         }else{
             super.onBackPressed();
         }
-    }
+    }*/
 }
