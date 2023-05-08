@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "715796509637",
+    "project_id": "practicaspppc-44261",
+    "storage_bucket": "practicaspppc-44261.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:715796509637:android:ba177baf08e9c4dc7791ac",
+        "android_client_info": {
+          "package_name": "com.example.movilprepracticasprofesional"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "715796509637-gntaeqasklv78pesqknc7dne4g8nebss.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCYGcvH23if3JyJA9Q16IWQO_xpnTyM4zg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "715796509637-gntaeqasklv78pesqknc7dne4g8nebss.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
