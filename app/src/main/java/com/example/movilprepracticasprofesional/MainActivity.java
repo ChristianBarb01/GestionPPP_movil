@@ -5,12 +5,16 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
@@ -23,6 +27,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 import com.google.firebase.database.FirebaseDatabase;
@@ -30,10 +35,13 @@ import com.google.firebase.database.FirebaseDatabase;
 public class MainActivity extends AppCompatActivity {
 
     Button btnGoogle;
+    private EditText name, email, password;
     FirebaseAuth auth;
     FirebaseDatabase database;
     GoogleSignInClient mGoogleSignInClient;
-     ProgressDialog progressDialog;
+    ProgressDialog progressDialog;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -46,48 +54,49 @@ public class MainActivity extends AppCompatActivity {
         auth = FirebaseAuth.getInstance();
         database = FirebaseDatabase.getInstance();
 
+        email = (EditText) findViewById(R.id.txtEmail);
+        password = (EditText) findViewById(R.id.txtPassword);
+
         progressDialog = new ProgressDialog(MainActivity.this);
         progressDialog.setTitle(" Creando cuenta");
         progressDialog.setMessage("Estamos creando su cuenta");
 
-        GoogleSignInOptions gso= new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken(getString(R.string.default_web_client_id))
-                        .requestEmail()
-                                .build();
-        mGoogleSignInClient = GoogleSignIn.getClient(this,gso);
-
-
+                .requestEmail()
+                .build();
+        mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
 
 
         btnGoogle.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               Google();
+                Google();
             }
         });
 
 
     }
 
-    int RC_SIGN_IN =40;
+    int RC_SIGN_IN = 40;
 
     private void Google() {
         Intent intent = mGoogleSignInClient.getSignInIntent();
-        startActivityForResult(intent,RC_SIGN_IN);
+        startActivityForResult(intent, RC_SIGN_IN);
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if(requestCode == RC_SIGN_IN){
+        if (requestCode == RC_SIGN_IN) {
 
             Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
 
-            try{
+            try {
                 GoogleSignInAccount account = task.getResult(ApiException.class);
                 firebaseAuth(account.getIdToken());
-            }catch (ApiException e){
+            } catch (ApiException e) {
                 throw new RuntimeException(e);
             }
         }
@@ -99,7 +108,7 @@ public class MainActivity extends AppCompatActivity {
                 .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
-                        if(task.isSuccessful()){
+                        if (task.isSuccessful()) {
                             FirebaseUser user = auth.getCurrentUser();
 
                             Users users = new Users();
@@ -110,18 +119,20 @@ public class MainActivity extends AppCompatActivity {
 
                             Intent intent = new Intent(MainActivity.this, bienvenida.class);
                             startActivity(intent);
-                        }
-                        else{
-                            Toast.makeText(MainActivity.this,"error", Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(MainActivity.this, "error", Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
     }
 
     public void onClickButton(View view) {
-        Intent vtn2= new Intent(this, bienvenida.class );
+        Intent vtn2 = new Intent(this, bienvenida.class);
         startActivity(vtn2);
     }
 
-  
+
+
+
+
 }

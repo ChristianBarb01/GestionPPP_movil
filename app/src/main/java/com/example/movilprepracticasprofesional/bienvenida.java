@@ -2,11 +2,13 @@ package com.example.movilprepracticasprofesional;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -71,8 +73,26 @@ public class bienvenida extends AppCompatActivity implements NavigationView.OnNa
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new RespuestaFragment()).commit();
                 break;
             case R.id.nav_exit:
-                Toast.makeText(this, "Logout", Toast.LENGTH_SHORT).show();
+                AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                builder.setTitle("Confirmación");
+                builder.setMessage("¿Desea salir de la aplicación?");
+                builder.setPositiveButton("Sí", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        finishAffinity(); // Sale de la aplicación
+                    }
+                });
+                builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss(); // Cierra el diálogo y no hace nada
+                    }
+                });
+                AlertDialog dialog = builder.create();
+                dialog.show();
                 break;
+
+
         }
         drawerLayout.closeDrawer(GravityCompat.START);
         return true;
